@@ -2,7 +2,7 @@
         <footer id="footer">
             <section class="footer-cade">
                 <ul>
-                    <li 
+                    <li
                     v-for="(item,index) in tabs"
                     :key="index"
                     >
@@ -18,16 +18,16 @@
 
 <script>
 export default {
-    props:{
-        tabs:{
-            type:Array
-        }
+  props: {
+    tabs: {
+      type: Array
     }
+  }
 }
 </script>
 
 <style>
-  @import '../style/iconfont/iconfont.css'; 
+  @import '../style/iconfont/iconfont.css';
   #footer {
   width: 100%;
   min-height: .48rem;
@@ -39,6 +39,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   background: #fff;
+  z-index: 9;
 }
 
 #footer ul {
@@ -63,5 +64,3 @@ export default {
     color: #ff5f16;
 }
 </style>
-
-

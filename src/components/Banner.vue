@@ -1,5 +1,6 @@
 <template>
-        <header id="header">
+    <div>
+        <header id="idheader">
             <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"
@@ -18,63 +19,95 @@
                     <div class="swiper-pagination"></div>
             </div>
     </header>
+    <aside class="checkbtn">
+      <router-link to='/city'> 深圳<i class="iconfont icon-xiajiantou"></i></router-link>
+    </aside>
+    </div>
 </template>
 
 <script>
-  export default{
-    props:{
-      tags:{
-        type:Array
-      }
-    },
-    data() {
-      return {
-        swipers:null
-      }
-    },
-        updated() {
-          if(!this.swipers){
-              new Swiper ('.swiper-container', {
-                  loop: true, // 循环模式选项
-            
-            // 如果需要分页器
-              pagination: {
-                el: '.swiper-pagination'
-              },
-            //滑动间隔
-              speed:800,
-              autoplay : {
-                  delay:1000,
-                  //用户操作后不停止
-                  disableOnInteraction: false,
-              },
-            //设置只能拖动结束再滑动
-              preventInteractionOnTransition : true,
-            // 如果需要滚动条
-              scrollbar: {
-                el: '.swiper-scrollbar'
-              },
-            })
-      }
-          }
-            
+// const Swiper=window.Swiper;
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.min.css'
+export default {
+  name:'Banner',
+  props: {
+    tags: {
+      type: Array
     }
+  },
+  data () {
+    return {
+      swipers: null
+    }
+  },
+  updated() {
+    this.changeitem()
+  },
+  activated () {
+    // this.swipers = null
+    this.changeitem()
+  },
+  methods: {
+    changeitem () {
+      this.swipers = new Swiper('.swiper-container', {
+        loop: true, // 循环模式选项
+
+        // 如果需要分页器
+        pagination: {
+          el: '.swiper-pagination'
+        },
+        // 滑动间隔
+        speed: 800,
+        autoplay: {
+          // delay: 1000,
+          // 用户操作后不停止
+          disableOnInteraction: false
+        },
+        // 设置只能拖动结束再滑动
+        preventInteractionOnTransition: true,
+        // 如果需要滚动条
+        scrollbar: {
+          el: '.swiper-scrollbar'
+        }
+      })
+    }
+  }
+}
 </script>
 
 <style>
-#header {
+#idheader {
   width: 100%;
   min-height: 2.1rem;
   position: relative;
 }
 
-#header .swiper-container {
+#idheader .swiper-container {
   width: 100%;
   height: 100%;
 }
-#header .swiper-container .swiper-wrapper img {
+#idheader .swiper-container .swiper-wrapper img {
   width: 100%;
   height: 2.1rem;
 }
-</style>
+.checkbtn {
+  position: fixed;
+  top: .18rem;
+  left: .07rem;
+  z-index: 2;
+  font-size: 13px;
+  background: rgba(0, 0, 0, 0.2);
+  height: 30px;
+  line-height: 30px;
+  border-radius: 15px;
+  text-align: center;
+  padding: 0 5px;
+}
 
+.checkbtn a {
+  color: #fff;
+  display: block;
+}
+
+</style>
